@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "ComCrashTestApp (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "ComCrashTestApp (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
