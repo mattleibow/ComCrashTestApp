@@ -3,11 +3,13 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
 using System;
 using System.Runtime.InteropServices;
+using Windows.Storage.Streams;
 
 namespace ComCrashTestApp;
 
 public partial class MyCanvas : Canvas
 {
+    private IBuffer pixBuff;
     private IntPtr pixels;
     private WriteableBitmap? bitmap;
     private ImageBrush? brush;
@@ -40,7 +42,7 @@ public partial class MyCanvas : Canvas
         if (bitmap == null)
         {
             bitmap = new WriteableBitmap(100, 100);
-            pixels = bitmap.GetPixels();
+            (pixBuff, pixels) = bitmap.GetPixels();
 
             brush = new ImageBrush
             {

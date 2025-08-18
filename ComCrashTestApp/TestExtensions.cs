@@ -7,8 +7,11 @@ namespace ComCrashTestApp;
 
 public static class TestExtensions
 {
-    internal static IntPtr GetPixels(this WriteableBitmap bitmap) =>
-        bitmap.PixelBuffer.GetByteBuffer();
+    internal static (IBuffer PB, IntPtr J) GetPixels(this WriteableBitmap bitmap)
+    {
+        var pb = bitmap.PixelBuffer;
+        return (pb, pb.GetByteBuffer());
+    }
 
     internal static IntPtr GetByteBuffer(this IBuffer buffer) =>
         (IntPtr)BufferExtensions.GetByteBuffer(buffer);
